@@ -1,13 +1,16 @@
 class Solution:
     def numberGame(self, nums: List[int]) -> List[int]:
-        nums.sort()
         n = len(nums)
-        new_arr = []
-        
+        for i in range(n):
+            min_idx = i
+            for j in range(i+1,n):
+                if(nums[j] < nums[min_idx]):
+                    nums[min_idx],nums[j] = nums[j], nums[min_idx]
+        output = []
         for i in range(0,n,2):
             if i + 1 < n:
-                A = nums[i]
-                B = nums[i+1]
-                new_arr.append(B)
-                new_arr.append(A)
-        return new_arr
+                a = nums[i]
+                b = nums[i + 1]
+                output.append(b)
+                output.append(a)
+        return output
