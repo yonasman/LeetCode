@@ -1,11 +1,11 @@
 class Solution:
     def isStrictlyPalindromic(self, n: int) -> bool:
-        for base in range(2,n-1):
+        for i in range(2,n-1):
+            temp_num = n
             str_bin = ""
-            num = n
-            while num:
-                str_bin = str(num % base) + str_bin
-                num = num // base
-            if(str_bin != str_bin[::-1]):
+            while temp_num:
+                str_bin = str(temp_num % i) + str_bin
+                temp_num = temp_num // i
+            if str_bin != str_bin[::-1]:
                 return False
         return True
