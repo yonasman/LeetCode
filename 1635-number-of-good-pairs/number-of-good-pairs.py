@@ -7,3 +7,5 @@ class Solution:
                 if nums[i] == nums[j] and i < j:
                     numOfIdentical += 1
         return numOfIdentical
+        # time complexity O(n ** 2)
+        # space Complexity O(1)
