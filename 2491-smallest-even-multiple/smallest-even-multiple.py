@@ -1,5 +1,8 @@
 class Solution:
     def smallestEvenMultiple(self, n: int) -> int:
-        for i in range(n,2*n + 1):
-            if i % 2 == 0 and i % n == 0:
-                return i
+        if n % 2 == 0:
+            return n
+        else:
+            return 2 * n
+        # time complexity O(1)
+        # space complexity O(1)
