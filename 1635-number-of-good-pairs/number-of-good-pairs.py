@@ -12,3 +12,5 @@ class Solution:
             if value > 1:
                 numOfIdentical += (value * (value - 1)) // 2
         return numOfIdentical
+        # time complexity O(n)
+        # space complexity O(n)
