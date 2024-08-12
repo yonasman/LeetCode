@@ -1,11 +1,14 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        n = len(nums)
+        # dictionary to count the number of unique items
+        d = {}
         numOfIdentical = 0
-        for i in range(n):
-            for j in range(i,n):
-                if nums[i] == nums[j] and i < j:
-                    numOfIdentical += 1
+        for num in nums:
+            if num in d:
+                d[num] += 1
+            else:
+                d[num] = 1
+        for value in d.values():
+            if value > 1:
+                numOfIdentical += (value * (value - 1)) // 2
         return numOfIdentical
-        # time complexity O(n ** 2)
-        # space Complexity O(1)
