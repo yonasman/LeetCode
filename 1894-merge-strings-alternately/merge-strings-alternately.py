@@ -11,3 +11,5 @@ class Solution:
         elif n1 > n2:
             mergedString += word1[n2:]
         return mergedString
+        # time complexity = O(n1 + n2)
+        # space complexity = O(n1 + n2)
