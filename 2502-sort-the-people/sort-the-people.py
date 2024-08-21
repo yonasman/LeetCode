@@ -1,15 +1,26 @@
 class Solution:
     def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
         n = len(heights)
+        max_ht = max(heights)
+        count = [0] * (max_ht + 1)
         
-        for i in range(1,n):
-            key = heights[i]
-            key2 = names[i]
-            j = i - 1
-            while j >= 0 and key > heights[j]:
-                heights[j+1] = heights[j]
-                names[j+1] = names[j]
-                j -= 1
-            heights[j+1] = key
-            names[j+1] = key2
-        return names
+        for h in heights:
+            count[h] += 1
+        for i in range(1, max_ht + 1):
+            count[i] += count[i - 1]
+        
+        outputHeights = [0] * n
+        outputNames = [0] * n
+        
+        for i in range(n - 1, -1,-1):
+            height = heights[i]
+            name = names[i]
+            
+            position = count[height] - 1
+            outputHeights[position] = height
+            outputNames[position] = name
+            
+            # decrease the count at height
+            count[height] -= 1
+        outputNames.reverse()
+        return outputNames
