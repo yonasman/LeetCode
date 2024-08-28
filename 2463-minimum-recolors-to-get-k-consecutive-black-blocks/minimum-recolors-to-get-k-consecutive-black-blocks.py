@@ -1,9 +1,14 @@
 class Solution:
     def minimumRecolors(self, blocks: str, k: int) -> int:
         n = len(blocks)
-        min_operations = float("inf")
+        min_opr = sum(1 for i in range(k) if blocks[i] == "W")
+        min_w = min_opr
         
-        for i in range(n - k + 1):
-            sub_block = blocks[i:k+i]
-            min_operations = min(min_operations, sub_block.count("W"))
-        return min_operations
+        for j in range(k,n):
+            if blocks[j - k] == "W":
+                min_w -= 1
+            if blocks[j] == "W":
+                min_w += 1
+            min_opr = min(min_opr, min_w)
+        return min_opr
+            
