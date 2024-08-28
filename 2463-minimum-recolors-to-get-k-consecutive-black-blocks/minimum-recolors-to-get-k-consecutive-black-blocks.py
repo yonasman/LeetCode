@@ -1,11 +1,9 @@
 class Solution:
     def minimumRecolors(self, blocks: str, k: int) -> int:
         n = len(blocks)
-        min_w_blk = 101
+        min_operations = float("inf")
+        
         for i in range(n - k + 1):
-            current_w_blocks = 0
-            for j in range(i,k + i):
-                if(blocks[j] == "W"):
-                    current_w_blocks += 1
-            min_w_blk = min(current_w_blocks,min_w_blk)
-        return min_w_blk
+            sub_block = blocks[i:k+i]
+            min_operations = min(min_operations, sub_block.count("W"))
+        return min_operations
