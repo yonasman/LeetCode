@@ -1,8 +1,9 @@
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
         n = len(nums)
-        for i in range(1,n):
-            nums[i] += nums[i - 1]
+        i = 1
+        
+        while i < n:
+            nums[i] = nums[i - 1] + nums[i]
+            i += 1
         return nums
-        # time complexity = O(n)
-        # space complexity = O(1)
