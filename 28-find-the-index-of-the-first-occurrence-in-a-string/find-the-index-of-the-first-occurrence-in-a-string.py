@@ -1,11 +1,11 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        p1, p2 = 0, len(needle)
+        if not needle:
+            return 0
+        
         n = len(haystack)
-        while p1 < n:
-            if haystack[p1:p2] == needle:
-                return p1
-            else:
-                p1 += 1
-                p2 += 1
+        m = len(needle)
+        for i in range(n - m + 1):
+            if haystack[i:i+m] == needle:
+                return i
         return -1
