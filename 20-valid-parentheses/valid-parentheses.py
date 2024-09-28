@@ -1,19 +1,18 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        hashmap = {
-            '}': '{',
-            ']' : '[',
-            ')' : '('
+        parenthesisPair = {
+        ']':'[',
+        '}' : '{',
+        ')' : '('
         }
         stack = []
-        for char in s:
-            if char in hashmap:
-                # handle the popping of stack if empty
-                popped_ele = stack.pop() if stack else "#"
-                if hashmap[char] != popped_ele:
-                    return False
+        for p in s:
+            if p not in parenthesisPair:
+                stack.append(p)
             else:
-                stack.append(char)
-        return not stack
-        # time complexity = O(n)
-        # space complexity = O(n)
+                if not stack:
+                    return False
+                popped_elem = stack.pop()
+                if popped_elem != parenthesisPair[p]:
+                    return False
+        return len(stack) == 0
