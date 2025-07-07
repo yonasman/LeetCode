@@ -3,6 +3,11 @@ class Solution:
         result = defaultdict(list)
 
         for s in strs:
-            sortedstr = ''.join(sorted(s))
-            result[sortedstr].append(s)
+            count = [0] * 26
+            for c in s:
+                count[ord(c) - ord('a')] += 1
+            result[tuple(count)].append(s)
+
         return list(result.values())
+
+            
